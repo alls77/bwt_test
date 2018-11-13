@@ -17,7 +17,7 @@
 
  <div class="tab-content tabs">
  <div role="tabpanel" class="tab-pane fade in active" >
- <form class="form-horizontal" action="<?php $_SERVER['PHP_SELF']?>" method="post">
+ <form class="form-horizontal" action="<?=$_SERVER['SCRIPT_NAME'];?>" method="post">
 
  <div class="form-group">
  <label for="exampleInputEmail1">Name</label>

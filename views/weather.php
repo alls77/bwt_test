@@ -6,7 +6,6 @@
 		use GuzzleHttp\Psr7\Request;
 		use PHPHtmlParser\Dom;
 		
-		if (isset($_SESSION['name'])) {
 			date_default_timezone_set('Europe/Kiev');
 			echo "<h3 style='color:#00008B;text-align:center'>Weather in Zaporizhia: ".date('d.m.Y')."</h3><br>";
 			
@@ -24,9 +23,6 @@
 			$dom->load($content);
 			
 			echo $dom->find('div[id=weather-daily]')->find('div[class=wsection wdata]')->find("table");
-			} else {
-			echo '<h3 style="color:red;text-align:center">For registered users only!</h3>';
-			}
 		?>
 </div>
 </div>
