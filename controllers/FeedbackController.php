@@ -1,6 +1,7 @@
 <?php
 
 include_once ROOT.'/models/Feedback.php';
+//use GuzzleHttp\Psr7\Request;
 
 class FeedbackController
 {
@@ -38,11 +39,22 @@ class FeedbackController
 	$query = $url_to_google_api.'?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response'].'&remoteip='.$_SERVER['REMOTE_ADDR'];	
 	$data = json_decode(file_get_contents($query));
 	
-		if ($data->success) {
-		return true;
-		} else {
-		return false;
-		}
+	return ($data->success);
 	}
+	
+	//if (isset($_POST['g-recaptcha-response'])) {
+	//			
+	//		$client = new GuzzleHttp\Client();
+	//		$url_to_google_api = "https://www.google.com/recaptcha/api/siteverify";
+	//		$secret_key = '6LdqMXoUAAAAAE253ortpLY_I58Att-AejebBR8p';
+	//		$query = $url_to_google_api.'?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response'].'&remoteip='.$_SERVER['REMOTE_ADDR'];	
+	//		$request = new Request('GET', $query);
+	//		$response = $client->send($request);
+	//		
+	//		$body = $response->getBody()->getContents();
+	//		
+	//		return (json_decode($body)->success) ?? false;
+	//}
+		
 	}
 }
