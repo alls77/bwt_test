@@ -14,13 +14,13 @@ class FeedbackController
 		@$message = trim($_POST['message']);
 
 		if (isset($_POST['feedback'])) {
-                        
+			
 			if (strlen($_POST['name']) >=3 && strlen($_POST['message']) >=10
-                && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
+				&& filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
 				&& $this->reCaptca()) {
 				
 				Feedback::saveFeedback($name,$email,$message);
-				echo '<h3 style="color:green;text-align:center" >Message send!</h3>';	
+				echo '<h3 style="color:green;text-align:center" >Message send!</h3>';
 			} else{
 				echo '<h3 style="color:red;text-align:center">Error!</h3>';
 			}
