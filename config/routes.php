@@ -1,6 +1,6 @@
 <?php
 
-return array(
+ return array(
 	'login' => 'login/index',
 	'weather' => 'weather/index',
 	'feedback' => 'feedback/index',
