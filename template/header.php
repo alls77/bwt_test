@@ -38,7 +38,7 @@
                     <li>
                         <form class="form-horizontal" action="login" method="post">
                             <?= "{$_SESSION['name']} {$_SESSION['surname']}  "; ?>
-                            <input type="submit" class="navbar-btn btn_log" value="Logout" name="logout">
+                            <input type="submit" class="btn navbar-btn btn_log" value="Logout" name="logout">
                         </form>
                     </li>
                 <?php } else {
