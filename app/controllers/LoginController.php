@@ -13,7 +13,6 @@ class LoginController extends Controller
 
     public function actionIndex()
     {
-
         @$name = trim($_POST['name']);
         @$surname = trim($_POST['surname']);
         @$email = trim($_POST['email']);
@@ -32,9 +31,6 @@ class LoginController extends Controller
                 $sign = Login::signUp($name, $surname, $email, $gender, $bday);
                 ($sign == null) ? $data[] = 'Registration successful!' : $data[]=$sign;
 
-//                $_SESSION['name'] = $_POST['name'];
-//                $_SESSION['surname'] = $_POST['surname'];
-//                $_SESSION['email'] = $_POST['email'];
                 @setcookie('email', $_POST['email'], time() + (86400 * 30), '/');
             }
         }
@@ -50,19 +46,20 @@ class LoginController extends Controller
                 $_SESSION['surname'] = $login['surname'];
                 $_SESSION['email'] = $login['email'];
 
-                header('Location: ' . "weather", true);
+                header('Location: ' . "login", true);
             } else {
                 $data[] ='Login incorrect!';
             }
         }
 
-        if (isset($_POST['logout'])) {
-            $_SESSION = [];
-            header('Location: ' . "login", true);
-        }
-        //require_once(ROOT . '/app/views/login.php');
         $this->view->generate('login.php', 'header.php', $data);
         return true;
+    }
+
+    public function actionLogout()
+    {
+        $_SESSION = [];
+        header('Location: ' . "login", true);
     }
 
     private function validate(&$data) {

@@ -34,7 +34,7 @@
                 <?php
                 if (isset($_SESSION['name'])) { ?>
                     <li>
-                        <form class="form-horizontal" action="login" method="post">
+                        <form class="form-horizontal" action="logout" method="post">
                             <?= "{$_SESSION['name']} {$_SESSION['surname']}  "; ?>
                             <input type="submit" class="btn navbar-btn btn_log" value="Logout" name="logout">
                         </form>
