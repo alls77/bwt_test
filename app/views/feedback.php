@@ -1,6 +1,11 @@
 <script src="/template/js/feedback.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
+<?php
+foreach ($data as $d):?>
+    <p><h3 style="color:green;text-align:center" ><?= $d; ?></h3></p>
+<?php endforeach; ?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">

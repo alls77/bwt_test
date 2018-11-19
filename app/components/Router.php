@@ -1,4 +1,5 @@
 <?php
+namespace app\components;
 
 class Router
 {
@@ -8,7 +9,7 @@ class Router
     public function __construct()
     {
         $routesPath = ROOT . '/config/routes.php';
-        $this->routes = include($routesPath);
+        $this->routes = include_once($routesPath);
     }
 
     private function getURI()

@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,3 +46,6 @@
         </div>
     </div>
 </nav>
+    <?php include_once ROOT . '\app\views\\' . $content_view; ?>
+</body>
+</html>

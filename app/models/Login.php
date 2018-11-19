@@ -1,26 +1,30 @@
 <?php
+namespace app\models;
+use app\components\Db;
+use app\core\Model;
 
-class Login
+class Login extends Model
 {
 
     public static function signIn($email)
     {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
+
         $result = $db->prepare("SELECT * FROM users WHERE email=" . "'$email'");
         $result->execute();
-        //$login = $result->fetch(PDO::FETCH_ASSOC);
         $login = $result->fetch();
         return $login;
     }
 
     public static function signUp($name, $surname, $email, $gender, $bday)
     {
-        $db = Db::getConnection();
+        $db = Db::getInstance()->getConnection();
 
         $login = Login::signIn($email);
 
         if (!empty($login['email'])) {
-            echo '<h3 style="color:green;text-align:center" >Username provided is already in use!</h3>';
+            //echo '<h3 style="color:green;text-align:center" >Username provided is already in use!</h3>';
+            return 'Username provided is already in use!';
             exit();
         }
 

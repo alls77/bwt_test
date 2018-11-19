@@ -61,12 +61,28 @@ class ComposerStaticInit964cd96138b8a2a668ad9c8c7d7b8241
         ),
     );
 
+    public static $classMap = array (
+        'FeedbackController' => __DIR__ . '/../..' . '/app/controllers/FeedbackController.php',
+        'FeedsController' => __DIR__ . '/../..' . '/app/controllers/FeedsController.php',
+        'LoginController' => __DIR__ . '/../..' . '/app/controllers/LoginController.php',
+        'WeatherController' => __DIR__ . '/../..' . '/app/controllers/WeatherController.php',
+        'app\\components\\Db' => __DIR__ . '/../..' . '/app/components/Db.php',
+        'app\\components\\Router' => __DIR__ . '/../..' . '/app/components/Router.php',
+        'app\\core\\Controller' => __DIR__ . '/../..' . '/app/core/Controller.php',
+        'app\\core\\Model' => __DIR__ . '/../..' . '/app/core/Model.php',
+        'app\\core\\View' => __DIR__ . '/../..' . '/app/core/View.php',
+        'app\\models\\Feedback' => __DIR__ . '/../..' . '/app/models/Feedback.php',
+        'app\\models\\Login' => __DIR__ . '/../..' . '/app/models/Login.php',
+        'app\\models\\Weather' => __DIR__ . '/../..' . '/app/models/Weather.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit964cd96138b8a2a668ad9c8c7d7b8241::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit964cd96138b8a2a668ad9c8c7d7b8241::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit964cd96138b8a2a668ad9c8c7d7b8241::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit964cd96138b8a2a668ad9c8c7d7b8241::$classMap;
 
         }, null, ClassLoader::class);
     }
