@@ -20,7 +20,5 @@ class WeatherController extends Controller
         } else {
             $this->view->generate('weather.php', 'header.php');
         }
-
-        return true;
     }
 }

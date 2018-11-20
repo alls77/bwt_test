@@ -7,5 +7,7 @@
     'feeds' => 'feeds/index',
     'logout' =>'login/logout',
      'register' => 'login/register',
-     'signin' => 'login/signin'
+     'signin' => 'login/signin',
+     'saveFeedback' => 'feedback/saveFeedback',
+     'listFeedback' => 'feedback/listFeedback'
 );

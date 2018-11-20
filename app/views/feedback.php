@@ -2,9 +2,11 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
 <?php
+if(isset($data)):
 foreach ($data as $d):?>
     <p><h3 style="color:green;text-align:center" ><?= $d; ?></h3></p>
-<?php endforeach; ?>
+<?php endforeach;
+endif;?>
 
 <div class="container">
     <div class="row">
@@ -17,7 +19,7 @@ foreach ($data as $d):?>
                 </ul>
                 <div class="tab-content tabs">
                     <div role="tabpanel" class="tab-pane fade in active">
-                        <form class="form-horizontal" action="feedback" method="post">
+                        <form class="form-horizontal" action="saveFeedback" method="post">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type="text" class="form-control" name="name" id="name"

@@ -1,4 +1,5 @@
 <?php
+
 use app\models\Feedback;
 use app\core\Controller;
 use app\core\View;
@@ -13,39 +14,47 @@ class FeedbackController extends Controller
 
     public function actionIndex()
     {
+        $this->view->generate('feedback.php', 'header.php');
+    }
+
+    public function actionSaveFeedback()
+    {
         @$name = trim($_POST['name']);
         @$email = trim($_POST['email']);
         @$message = trim($_POST['message']);
         $data = [];
 
-        if (isset($_POST['feedback'])) {
+        if ($this->validate($name, $email, $message, $data)) {
 
-            if ($this->validate($data)) {
-
-                //Feedback::saveFeedback($name, $email, $message);
-                $this->model->saveFeedback($name, $email, $message);
-                $data[]= 'Message send!';
-            }
+            $this->model->saveFeedback($name, $email, $message);
+            $data[] = 'Message send!';
         }
 
         $this->view->generate('feedback.php', 'header.php', $data);
-        return true;
     }
 
-    private function validate(&$errors) {
-        if (strlen($_POST['name']) < 3) {
-            $errors[]= 'Name is at least 3 characters long';
+    public function actionListFeedback()
+    {
+        if (isset($_SESSION['name'])) {
+            $data = $this->model->getFeedbacks();
+            $this->view->generate('feeds.php', 'header.php', $data);
+        } else {
+            $this->view->generate('feeds.php', 'header.php');
         }
-        elseif (strlen($_POST['message']) < 10) {
-            $errors[]= 'Message is at least 10 characters long';
-        }
-        elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-            $errors[]= 'Email incorrect!';
-        }
-        elseif($this->reCaptca()==false) {
-            $errors[]= 'Captca incorrect!';
-        }
-        else {
+    }
+
+
+    private function validate($name, $email, $message, &$data)
+    {
+        if (strlen($name) < 3) {
+            $data[] = 'Name is at least 3 characters long';
+        } elseif (strlen($message) < 10) {
+            $data[] = 'Message is at least 10 characters long';
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $data[] = 'Email incorrect!';
+        } elseif ($this->reCaptca() == false) {
+            $data[] = 'Captca incorrect!';
+        } else {
             return true;
         }
     }

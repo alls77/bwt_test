@@ -26,7 +26,7 @@ class LoginController extends Controller
         @$bday = $_POST['bday'];
         $data = [];
 
-        if ($this->validate($data)) {
+        if ($this->validate($name,$surname,$email,$data)) {
 
             if (empty($bday)) $bday = NULL;
             if (empty($gender)) $gender = NULL;
@@ -67,13 +67,13 @@ class LoginController extends Controller
         header('Location: ' . "login", true);
     }
 
-    private function validate(&$data)
+    private function validate($name,$surname,$email,&$data)
     {
-        if (strlen($_POST['name']) < 3) {
+        if (strlen($name) < 3) {
             $data[] = 'Name is at least 3 characters long';
-        } elseif (strlen($_POST['surname']) < 3) {
+        } elseif (strlen($surname) < 3) {
             $data[] = 'Surname is at least 3 characters long';
-        } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $data[] = 'Email incorrect!';
         } else {
             return true;

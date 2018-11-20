@@ -27,7 +27,7 @@
                     <li><a href="login">Main</a></li>
                     <li><a href="weather">Weather</a></li>
                     <li><a href="feedback">Feedback</a></li>
-                    <li><a href="feeds">Feedbacks</a></li>
+                    <li><a href="listFeedback">Feedbacks</a></li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
