@@ -1,9 +1,12 @@
 <script src="/template/js/main.js"></script>
 
 <?php
+if(isset($data)):
 foreach ($data as $d):?>
     <p><h3 style="color:green;text-align:center" ><?= $d; ?></h3></p>
-<?php endforeach; ?>
+<?php
+endforeach;
+endif;?>
 
 <div class="container">
     <div class="row">
@@ -21,7 +24,7 @@ foreach ($data as $d):?>
                 <div class="tab-content tabs">
                     <div role="tabpanel" class="tab-pane fade in active" id="Section1">
 
-                        <form class="form-horizontal" action="login" method="post">
+                        <form class="form-horizontal" action="signin" method="post">
 
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email</label>
@@ -37,7 +40,7 @@ foreach ($data as $d):?>
 
                     <div role="tabpanel" class="tab-pane fade" id="Section2">
 
-                        <form class="form-horizontal" action="login" method="post">
+                        <form class="form-horizontal" action="register" method="post">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type="text" class="form-control" name="name" id="name" required>

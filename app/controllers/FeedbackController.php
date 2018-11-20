@@ -22,7 +22,8 @@ class FeedbackController extends Controller
 
             if ($this->validate($data)) {
 
-                Feedback::saveFeedback($name, $email, $message);
+                //Feedback::saveFeedback($name, $email, $message);
+                $this->model->saveFeedback($name, $email, $message);
                 $data[]= 'Message send!';
             }
         }

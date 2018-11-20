@@ -14,7 +14,7 @@ class FeedsController extends Controller
     public function actionIndex()
     {
         if (isset($_SESSION['name'])) {
-            $data = Feedback::getFeedbacks();
+            $data = $this->model->getFeedbacks();
             $this->view->generate('feeds.php', 'header.php', $data);
         } else {
             $this->view->generate('feeds.php', 'header.php');

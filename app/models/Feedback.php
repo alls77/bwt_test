@@ -5,25 +5,27 @@ use app\core\Model;
 
 class Feedback extends Model
 {
+    private static $db;
+
+    function __construct () {
+        self::$db = Db::getInstance()->getConnection();
+    }
+
     public static function saveFeedback($name, $email, $message)
     {
-        $db = Db::getInstance()->getConnection();
-
         $data = array('name' => $name,
             'email' => $email,
             'message' => $message
         );
         $sql = 'INSERT INTO feedback(name, email, message) VALUES(:name, :email, :message)';
-        $insert = $db->prepare($sql);
+        $insert = self::$db->prepare($sql);
         $insert->execute($data);
     }
 
     public static function getFeedbacks()
     {
-        $db = Db::getInstance()->getConnection();
-
         $sql = 'SELECT * FROM feedback ORDER BY id DESC';
-        $result = $db->prepare($sql);
+        $result = self::$db->prepare($sql);
         $result->execute();
 
         $feedbacks = array();
